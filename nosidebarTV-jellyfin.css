@@ -1,0 +1,234 @@
+/* ============================================================
+   NOSIDEBAR TV — Jellyfin Theme
+   Built on top of Seth's GNAT-MD3 theme (v8.1.0)
+   
+   PASTE THIS into Jellyfin:
+   Dashboard > General > Custom CSS
+   ============================================================ */
+
+@import url("https://cdn.jsdelivr.net/gh/JSethCreates/jellyfin-theme-sethstyle/jellyfin-theme-sethstyle.css");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap');
+
+/* ── NOSIDEBAR TV Color System (overrides Seth's MD3 palette) ── */
+:root {
+
+  /* Primary = NSB Red */
+  --md-sys-color-primary:               #e8352a !important;
+  --md-sys-color-on-primary:            #f0ede6 !important;
+  --md-sys-color-primary-container:     #7a1a15 !important;
+  --md-sys-color-on-primary-container:  #f0ede6 !important;
+
+  /* Secondary = warm muted */
+  --md-sys-color-secondary:             #a09890 !important;
+  --md-sys-color-on-secondary:          #f0ede6 !important;
+
+  /* Tertiary = off-white accent */
+  --md-sys-color-tertiary:              #c8c4bc !important;
+
+  /* Surfaces = near-black */
+  --md-sys-color-surface:               #111111 !important;
+  --md-sys-color-on-surface:            #f0ede6 !important;
+  --md-sys-color-outline:               #3a3835 !important;
+
+  /* Base background */
+  --bg-color:                           #080808 !important;
+  --color-text-body:                    #f0ede6cc !important;
+
+  /* Fonts */
+  --nsb-display:                        'Bebas Neue', sans-serif;
+  --nsb-mono:                           'DM Mono', monospace;
+}
+
+/* ── Override base font ── */
+html {
+  font-family: var(--nsb-mono) !important;
+}
+
+/* ── Scanline overlay ── */
+body::after {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.10) 2px,
+    rgba(0,0,0,0.10) 4px
+  ) !important;
+  pointer-events: none !important;
+  z-index: 9998 !important;
+}
+
+/* ── Red ticker bar at very top ── */
+.skinHeader::before {
+  content: 'NOW STREAMING  ·  NOSIDEBAR TV  ·  YOUR LIBRARY  ·  YOUR RULES  ·  NO ADS  ·  NO ALGORITHMS  ·  POWERED BY JELLYFIN  ·  NO SIDEBAR  ·' !important;
+  display: block !important;
+  width: 100% !important;
+  background: #e8352a !important;
+  color: #ffffff !important;
+  font-family: var(--nsb-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.15em !important;
+  padding: 5px 0 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+/* ── Homepage diagonal pattern ── */
+#indexPage {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(232,53,42,0.02) 2px,
+      rgba(232,53,42,0.02) 4px
+    ) !important;
+}
+
+/* ── Section / Library headings → Bebas Neue ── */
+.sectionTitle,
+.sectionTitleTextButton,
+.sectionTitleText,
+h1, h2, h3 {
+  font-family: var(--nsb-display) !important;
+  letter-spacing: 0.06em !important;
+  color: #f0ede6 !important;
+}
+
+/* ── Media item title (movie/show name) → Bebas Neue ── */
+.itemName,
+.parentName {
+  font-family: var(--nsb-display) !important;
+  letter-spacing: 0.04em !important;
+  color: #f0ede6 !important;
+}
+
+/* ── Card text → DM Mono ── */
+.cardText,
+.cardTextSecondary,
+.cardOverlayText {
+  font-family: var(--nsb-mono) !important;
+  letter-spacing: 0.05em !important;
+}
+
+.cardText {
+  color: #f0ede6 !important;
+  font-size: 11px !important;
+}
+
+.cardTextSecondary {
+  color: #5a5650 !important;
+  font-style: italic !important;
+}
+
+/* ── Card hover → red border ── */
+.card:hover .cardBox,
+.card:focus .cardBox {
+  border-color: #e8352a !important;
+  outline: 1px solid #e8352a !important;
+}
+
+/* ── Buttons → DM Mono, square, red ── */
+.raised,
+.button-submit,
+.emby-button.raised {
+  font-family: var(--nsb-mono) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+}
+
+/* ── Nav / Drawer labels → DM Mono ── */
+.navMenuOption,
+.drawerMenuItem {
+  font-family: var(--nsb-mono) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+}
+
+/* ── Progress bars → NSB Red ── */
+.itemProgressBarForeground,
+.mdl-slider__background-lower {
+  background: #e8352a !important;
+}
+
+/* ── Input focus → red outline ── */
+.emby-input:focus,
+input:focus,
+.emby-textarea:focus {
+  border-color: #e8352a !important;
+  outline: none !important;
+}
+
+/* ── Input labels → DM Mono, red ── */
+.inputLabel,
+label {
+  font-family: var(--nsb-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.3em !important;
+  text-transform: uppercase !important;
+  color: #e8352a !important;
+}
+
+/* ── Backdrop darken ── */
+.backdropImage {
+  opacity: 0.2 !important;
+  filter: grayscale(50%) !important;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-thumb { background: #7a1a15; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #e8352a; }
+
+/* ── Text selection ── */
+::selection {
+  background: #e8352a !important;
+  color: #fff !important;
+}
+
+/* ── OSD / Now Playing bar ── */
+.nowPlayingBar {
+  background: #080808 !important;
+  border-top: 1px solid #1a1a1a !important;
+}
+
+.nowPlayingBarCurrentTime,
+.nowPlayingBarDuration,
+.nowPlayingBarText {
+  font-family: var(--nsb-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.15em !important;
+}
+
+/* ── Rating / media info badges → DM Mono ── */
+.mediaInfoItem,
+.ratingItem,
+.mediaInfoText {
+  font-family: var(--nsb-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* ── Overview / plot text ── */
+.overview,
+.itemOverview {
+  font-family: var(--nsb-mono) !important;
+  font-style: italic !important;
+  color: #a09890 !important;
+  line-height: 1.7 !important;
+}
+
+/* ── Tagline ── */
+.tagline {
+  font-family: var(--nsb-mono) !important;
+  letter-spacing: 0.2em !important;
+  color: #5a5650 !important;
+  font-style: italic !important;
+}
